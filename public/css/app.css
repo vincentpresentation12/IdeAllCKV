@@ -521,18 +521,28 @@ div p {
 
 .col2flex .entete {
     margin-left: 5%;
+    color: #5B6fA3;
 }
-
+.col2flex hr {
+    border-bottom: 1px solid rgba(203, 213, 224, 0.312);
+}
 .col2flex .entete h2 {
     color: #18347D;
     font-weight: normal;
 }
 
-.col2flex .entete {
-    color: #5B6fA3;
-} 
+.col2flex h3 {
+    margin-left: 5%;
+    margin-bottom: -10px;
+    color: #FFBC40;
+}
 .col2flex .entete span {
     margin-left: 2px;
+}
+
+.col2flex .entete a {
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 .dashContent {
@@ -588,7 +598,13 @@ div p {
     margin: auto;
 }
 .btnD {margin-top: 2%;}
-
+.btnS {
+    background-color: #9b3b3b; 
+    float: left;
+    color: white;
+    padding: 8px;
+    border-radius: 50px;
+}
 .listAnimator {
     display: flex; 
     flex-wrap: wrap;
@@ -605,6 +621,7 @@ div p {
     box-shadow: 0px 0px 4px grey;
     padding: 15px;
     width: 49%;
+    max-width: 275px;
     height: 85px;
     display: flex; 
     flex-wrap: wrap;
@@ -665,5 +682,219 @@ div p {
     height: 12px;
     border-radius: 50%;
     background-color: green;
-    float: right
+    float: right;
+}
+
+.searchsort {
+    width: 70%;
+    margin: auto;
+    margin-top : 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between!important;
+    vertical-align: center;
+}
+#searchbox{
+    background: url(http://2.bp.blogspot.com/-xpzxYc77ack/VDpdOE5tzMI/AAAAAAAAAeQ/TyXhIfEIUy4/s1600/search-dark.png) no-repeat 97% 47%;
+    border: 1px solid #f2f2f2;
+    color: #6A6F75;
+    padding-left: 10px;
+}
+
+.searchsort select {
+    display: block; position: relative;
+    border : 1px solid #18347D;
+    color: #18347D;
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-right: 2%;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.searchsort a.btnDash {
+    display: block; position: relative;
+}
+input#searchbox {
+    padding: 10px; 
+    width: 50%;
+}
+#searchbox::placeholder{
+    font-weight: normal;
+    font-family: nunito;
+}
+
+.allAnim, .allCours {
+    width: 70%;
+    margin: auto;
+}
+
+/*** AFFICHAGE DES ANIMATEURS ***/
+.displayAnim {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.displayAnim:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+.displayAnim:nth-child(even) {
+    background-color: white;
+}
+.nameTeamLang {
+    width: 25%;
+    max-width: 200px;
+    margin-left: 10px;
+}
+.nameTeamLang .name {
+    display: block;
+    font-weight: bold;
+    color: #4A4A4A;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+}
+
+.nameTeamLang .team {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #808080;
+    height: 15px;
+    align-items: center;
+}
+
+.displayAnim .typeA {
+    text-transform: uppercase;
+    color: #808080;
+    font-size: 12px;
+   
+}
+
+.animActive .inactive, .animActive.active {
+    width: 100px;
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: white;
+    align-items: center;
+    padding-top: 2px;
+}
+
+.animActive .inactive {
+    background-color: #BABABA;
+}
+
+.animActive .active {
+    background-color: #18347D;
+}
+
+.animModerate button {background-color: transparent;}
+.animModerate i {font-size: 12px; margin: 3px;}
+
+
+/*** AFFICHAGE DES FORMATIONS ***/
+
+.allCours {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.displayCours {
+    background-color: #f9f9f9;
+    padding: 30px;
+    width: 49%;
+    max-width: 250px;
+    margin: 5;
+}
+
+.moderateButtons {
+    text-align: right;
+    margin-top: -5px;
+}
+.moderateButtons a, .moderateButtons form button {
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: transparent!important;
+    font-size: 11px;
+}
+
+.displayCours .titleCours {
+    display: block;
+    font-weight: 600;
+    font-size: 18px;
+    color: #545454;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+}
+
+.subCours {
+    display: block;width: 100%;
+    font-size: 14px;
+    max-height: 45px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #7B7B7B;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+}
+
+.typeCours {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #8997BB;
+}
+
+.dateCours {
+    font-size: 12px;
+}
+
+.langCours {
+    text-align: center;
+    font-size: 12px;
+}
+/***  CREER UN ANIMATEUR, UNE FORMATION OU UN EVENEMENT  ***
+*** AFFICHER UN ANIMATEUR, UNE FORMATION OU UN EVENEMENT ***/
+
+.forms {width: 80%;}
+.forms .form-group {
+    background-color: #f9f9f9;
+    border-bottom: 2px solid white;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content : space-around;
+}
+.forms .div-group {
+    background-color: #f9f9f9;
+    border-bottom: 2px solid white;
+    padding: 20px;
+} 
+
+.forms .div-group strong {display: inline-block;}
+
+.forms .form-group label, .forms .div-group strong {
+    margin-left: 15px; 
+    color: #545454;
+    width: 30%;
+}
+
+.forms .form-group input::placeholder {
+    color: #BABABA;
+}
+.forms .form-group input, .forms .form-group textarea {
+   width: 65%;
+   background-color: #f9f9f9!important;
+   border-bottom: 1px solid #BABABA;
+} 
+.forms .form-group textarea {
+    font-family: Nunito;
+}
+.forms button {
+    float: right;
 }

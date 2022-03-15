@@ -1,44 +1,24 @@
 @extends('admin.user.layout')
-
-
-
 @section('content')
+@extends('layouts.sidebaradm')
 
-
-    <div class="row justify-content-center">
-
-        <div class="col-lg-8 margin-tb">
-
-            <div class="row">
-
-                <div class="col-md-12">
-
-                    <div class="text-start mt-5">
-
-                        <h2>Edit Post</h2>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-12 text-end mt-4">
-
-                <a class="btn btn-primary" href="{{ route('adminuser.index') }}">< Back</a>
-
-            </div>
-
-        </div>
-
+@section('sidebarleft')
+<a href="/adminuser">Les animateurs</a>
+<br/>
+<a href="/adminformation">Les formations</a>
+<br/>
+<a href="/adminevent">Les évènements</a>
+@endsection
+<div class="col2flex">
+    <div class="entete">
+        <h2>Éditer un nouvel animateur</h2>
+        <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
     </div>
+    <hr/>      
+    
+        <div class="dashContent">
 
-
-
-    <div class="row justify-content-center">
-
-        <div class="col-lg-8 margin-tb">
-
+        
             @if ($errors->any())
 
                 <div class="alert alert-danger">
@@ -59,63 +39,45 @@
 
             @endif
 
-
-
-            <form action="{{ url('adminuser/'.$users->id) }}" method="POST">
+            <form action="{{ url('adminuser/'.$users->id) }}" method="POST" class="forms">
 
                 @csrf
 
                 @method('PATCH')
 
+                
+                <div class="form-group">
 
+                    <label>Prénom :</label>
 
-                 <div class="row">
-
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-
-                        <div class="form-group">
-
-                            <strong>Title:</strong>
-
-                            <input type="text" name="firstname" value="{{ $users->firstname }}" class="form-control" placeholder="Title">
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-
-                        <br>
-
-                        <div class="form-group">
-
-                            <strong>Body:</strong>
-
-                            <textarea class="form-control" style="height:150px" name="lastname" placeholder="Body">{{ $users->lastname }}</textarea>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
-
-                        <button type="submit" class="btn btn-success">Submit</button>
-
-                    </div>
+                    <input type="text" name="firstname" value="{{ $users->firstname }}" class="form-control" placeholder="ex: Jean">
 
                 </div>
+                <div class="form-group">
 
+                    <label>Nom :</label>
 
+                    <input class="form-control" name="lastname" placeholder="Body" value="{{ $users->lastname }}">
 
+                </div>
+                <div class="form-group">
+
+                    <label>Équipe :</label>
+
+                    <input type="text" name="team" value="{{ $users->team }}" class="form-control" placeholder="team">
+
+                </div>
+                <br/>
+                
+                <button type="submit" class="btnDash btn-success">Enregistrer les modifications</button>
             </form>
-            <form method="POST" action="{{ url('/adminuser' . '/' . $users->id) }}" accept-charset="UTF-8" style="display:inline">
+            
+        
+        <form method="POST" action="{{ url('/adminuser' . '/' . $users->id) }}" accept-charset="UTF-8">
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
-        <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-    </form>
+        <button type="submit" class="btnS btn-danger" title="Delete Student" onclick="return confirm('Confirm delete')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>    
+        </form>
 
         </div>
 

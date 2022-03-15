@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('user_type')->default('animateur');
             $table->enum('type',['virtuel', 'physique', 'physique et virtuel']);
-            //$table->foreignId('idAddress')->nullable();
+            $table->boolean('isActive')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

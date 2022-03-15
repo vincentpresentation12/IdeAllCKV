@@ -1,17 +1,30 @@
 @extends('admin.user.layout')
 @section('content')
-<div class="card">
-  <div class="card-header">Création de formation</div>
-  <div class="card-body">
+@extends('layouts.sidebaradm')
 
-      <form action="{{ url('adminformation') }}" method="post">
+@section('sidebarleft')
+<a href="/adminuser">Les animateurs</a>
+<br/>
+<a href="/adminformation">Les formations</a>
+<br/>
+<a href="/adminevent">Les évènements</a>
+@endsection
+<div class="col2flex">
+<div class="entete">
+        <h2>Créer une nouvelle formation</h2>
+        <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
+    </div>
+    <hr/>
+            <div class="dashContent">
+
+      <form action="{{ url('adminformation') }}" method="post" class="forms">
       @csrf
         <div class="form-group">
-            <label for="title">title:</label>
+            <label for="title">Titre:</label>
             <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
         </div>
         <div class="form-group">
-            <label for="descrFormations">description:</label>
+            <label for="descrFormations">Description rapide:</label>
             <input type="text" class="form-control" id="descrFormations" placeholder="Enter description" name="descrFormations">
         </div>
         <div class="form-group">
@@ -19,18 +32,19 @@
             <input type="date" name="startDate" id="startDate" rows="10" placeholder="startDate" >
         </div>
         <div class="form-group">
-            <label for="endDate">date de fin :</label>
+            <label for="endDate">Date de fin :</label>
             <input type="date" name="endDate" id="endDate" rows="10" placeholder="endDate" >
         </div>
         <div class="form-group">
-            <label for="type">email:</label>
+            <label for="type">Type de l'évènement:</label>
             <input class="form-control" id="type" name="type" rows="10" placeholder="type">
         </div>
         <div class="form-group">
-            <label for="idActivity">activité:</label>
+            <label for="idActivity">Activité:</label>
             <input class="form-control" id="idActivity" name="idActivity" rows="10" placeholder="idActivity">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <br/>
+        <button type="submit" class="btnDash btn-default">Créer la formation</button>
     </form>
 
   </div>

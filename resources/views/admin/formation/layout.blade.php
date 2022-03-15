@@ -6,22 +6,26 @@
 
     <title>IdeAll</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7bdd4fe0e8.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <header></header>
 
+    <main>
+        <div class="containerIA">
+            @yield('content')
+        </div>
+    </main>
 
-
-<div class="container">
-
-    @yield('content')
-
-</div>
-
-
-
+    <footer></footer>
+    
 </body>
 
 </html>

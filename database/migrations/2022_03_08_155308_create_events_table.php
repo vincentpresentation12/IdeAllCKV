@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('nameEvent');
             $table->date('startDate');
             $table->date('endDate');
-            $table->time('duration');
+            $table->time('duration')->nullable();
             $table->smallInteger('nbAnimNeed');
-            $table->smallInteger('nbAnimSub');
+            $table->smallInteger('nbAnimSub')->default(0);
             $table->smallInteger('nbParticipant');
             $table->string('companyName');
             $table->text('descrEvent');

@@ -1,53 +1,57 @@
-@extends('admin.formation.layout')
+@extends('admin.user.layout')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Laravel 9 Crud</h2>
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ url('/adminformation/create') }}" class="btn btn-success btn-sm" title="Add New Student">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                        <br/>
-                        <br/>
-                        <a class="btn btn-primary" href="{{ url('admin') }}">< Back</a>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>title</th>
-                                        <th>description</th>
-                                        <th>type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($formations as $formation)
-                                    <tr>
-                                        <td>{{ $formation->id }}</td>
-                                        <td>{{ $formation->title }}</td>
-                                        <td>{{ $formation->descrFormations }}</td>
-                                        <td>{{ $formation->type }}</td>
-                                        <td>
-                                            <a href="{{ url('/adminformation/' . $formation->id) }}" title="View formation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/adminformation/' . $formation->id . '/edit') }}" title="Edit formation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            <form method="POST" action="{{ url('/adminformation' . '/' . $formation->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+@extends('layouts.sidebaradm')
+
+@section('sidebarleft')
+<a href="/adminuser">Les animateurs</a>
+<br/>
+<a href="/adminformation">Les formations</a>
+<br/>
+<a href="/adminevent">Les évènements</a>
+@endsection
+<div class="col2flex">
+    <div class="entete">
+        <h2>Les Formations</h2>
+        <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
     </div>
+    <hr/>     
+    
+    <div class="searchsort">
+        <input id="searchbox" onkeyup="search_anim()" type="text"
+        name="search" placeholder="Rechercher..." class="search"> 
+     
+        <select name="" id="">
+        <option value="">Tous</option>
+            
+        </select>
+        
+
+        <a href="{{ url('/adminformation/create') }}" class="btnDash btn-primary">Ajouter une formation</a>
+      
+    </div>
+    <div class="dashContent">
+        <div class="allCours">
+        @foreach($formations as $formation)
+        <div class="displayCours">
+            <div class="moderateButtons">
+                <a href="{{ url('/adminformation/' . $formation->id) }}" title="View formation"><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                <a href="{{ url('/adminformation/' . $formation->id . '/edit') }}" title="Edit formation"><i class="fa-solid fa-pen" aria-hidden="true"></i></a>
+                <form method="POST" action="{{ url('/adminformation' . '/' . $formation->id) }}" accept-charset="UTF-8" style="display:inline">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <button type="submit" title="Delete Student" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </form>
+            </div>
+            <div class="titleCours">{{ $formation->title }}</div>
+            <div class="subCours">{{ $formation->descrFormations }}</div>
+            <div class="typeCours">{{ $formation->type }}</div>
+            <div class="dateCours">date et heure</div>
+            <div class="langCours">img langue</div>
+        </div>
+        @endforeach
+        </div>    
+
+                
+    </div>
+</div>
 @endsection

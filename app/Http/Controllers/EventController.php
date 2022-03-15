@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-use function PHPSTORM_META\map;
 
 class EventController extends Controller
 
@@ -63,21 +63,14 @@ class EventController extends Controller
     public function store(Request $request)
 
     {
-        $request->validate([
-        'nameEvent'=>'required',
-        'startDate'=>'nullable',
-        'endDate'=>'nullable',
-        'nbAnimNeed'=>'required',
-        'companyName'=>'required',
-        'descrEvent'=>'required',
-        'type'=>'required'
-        ]);
-
         $event = new Event([
             'nameEvent' => $request->get('nameEvent'),
-            'startDate' => $request->get('startdate'),
+            'startDate' => $request->get('startDate'),
             'endDate' => $request->get('endDate'),
+            'duration' => '10:00:00',
             'nbAnimNeed' => $request->get('nbAnimNeed'),
+            'nbAnimSub' => 0,
+            'nbParticipant' => 0,
             'companyName' => $request->get('companyName'),
             'descrEvent' => $request->get('descrEvent'),
             'isOpen' => false,
@@ -86,7 +79,7 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect('adminevents')
+        return redirect('adminevent')
                         ->with('success','event created successfully.');
     }
 
@@ -153,7 +146,7 @@ class EventController extends Controller
         $input = $request->all();
         $post->update($input);
 
-        return redirect('adminevents')
+        return redirect('adminevent')
                         ->with('success','event updated successfully');
     }
 
@@ -172,7 +165,7 @@ class EventController extends Controller
     public function destroy($id)
     {
         Event::destroy($id);
-        return redirect('adminevents')
+        return redirect('adminevent')
                         ->with('success','Post deleted successfully');
     }
 

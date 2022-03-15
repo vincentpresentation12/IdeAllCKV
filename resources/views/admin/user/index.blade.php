@@ -1,53 +1,81 @@
 @extends('admin.user.layout')
+@extends('layouts.sidebaradm')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Laravel 9 Crud</h2>
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ url('/adminuser/create') }}" class="btn btn-success btn-sm" title="Add New Student">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                        <br/>
-                        <br/>
-                        <a class="btn btn-primary" href="{{ url('admin') }}">< Back</a>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>firstname</th>
-                                        <th>lastname</th>
-                                        <th>email</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($users as $user)
-                                    <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->firstname }}</td>
-                                        <td>{{ $user->lastname }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>
-                                            <a href="{{ url('/adminuser/' . $user->id) }}" title="View user"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/adminuser/' . $user->id . '/edit') }}" title="Edit user"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            <form method="POST" action="{{ url('/adminuser' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+@section('sidebarleft')
+<a href="/adminuser">Les animateurs</a>
+<br/>
+<a href="/adminformation">Les formations</a>
+<br/>
+<a href="/adminevent">Les évènements</a>
+@endsection
+<div class="col2flex">
+    <div class="entete">
+        <h2>Les animateurs</h2>
+        <a class="btn btn-primary" href="/admin">Page précédente</a>
+    </div>
+    <hr/>
+   
+    <div class="searchsort">
+        <input id="searchbox" onkeyup="search_anim()" type="text"
+        name="search" placeholder="Rechercher..." class="search"> 
+     
+        <select name="" id="">
+        <option value="">Tous</option>
+            
+        </select>
+        
+
+        <a href="{{ url('/adminuser/create') }}" class="btnDash btn-primary">Ajouter un animateur</a>
+      
+    </div>
+            
+    <div class="dashContent">
+
+        <div class="allAnim">
+        @foreach($users as $user)
+            <div class="displayAnim">
+                <div class="nameTeamLang">
+                    <span class="name">{{ $user->firstname }} {{ $user->lastname }}</span>
+                    <span class="team">{{ $user->team }}</span><br/>
+                    <span class="lang">
+                        @if ( $user->isBilingual == 0 )
+                        <img src="images/fr.png" class="langimg" alt="fr"/>
+                        @else
+                        <img src="images/fr.png" class="langimg" alt="fr"/>
+                        <img src="images/en.png" class="langimg" alt="en"/>
+                        @endif
+                    </span>
+                </div>
+
+                <div class="typeA">
+                    <span class="type">{{ $user->type }}</span>
+                </div>
+
+                <div class="animActive">
+                    <div class="isActive">
+                        @if ($user->isActif == 0)
+                        <div class="inactive">Inactif</div>
+                        @else 
+                        <div class="active">Actif</div>
+                        @endif
+                            
                     </div>
                 </div>
+
+                <div class="animModerate">
+                    <a href="{{ url('/adminuser/' . $user->id) }}" title="View user"><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                    <a href="{{ url('/adminuser/' . $user->id . '/edit') }}" title="Edit user"><i class="fa-solid fa-pen"></i></a>
+                    <form method="POST" action="{{ url('/adminuser' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button type="submit" title="Delete Student" onclick="return confirm('Confirm delete')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    </form>
+                </div>
             </div>
+            @endforeach
         </div>
+                
     </div>
+</div>
+<script src="js/script.js"></script>
 @endsection

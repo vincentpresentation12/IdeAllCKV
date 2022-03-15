@@ -1,24 +1,42 @@
 @extends('admin.user.layout')
 @section('content')
-<div class="card">
-  <div class="card-header">Création d'utilisateur'</div>
-  <div class="card-body">
+@extends('layouts.sidebaradm')
 
-      <form action="{{ url('adminuser') }}" method="post">
+@section('sidebarleft')
+<a href="/adminuser">Les animateurs</a>
+<br/>
+<a href="/adminformation">Les formations</a>
+<br/>
+<a href="/adminevent">Les évènements</a>
+@endsection
+<div class="col2flex">
+<div class="entete">
+        <h2>Créer un nouvel animateur</h2>
+        <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
+    </div>
+    <hr/>
+
+        <div class="dashContent">
+          <form action="{{ url('adminuser') }}" method="post" class="forms">
       @csrf
         <div class="form-group">
-            <label for="firstname">Firstname :</label>
-            <input type="text" class="form-control" id="firstname" placeholder="Enter First Name" name="firstname">
+            <label for="firstname">Prénom :</label>
+            <input type="text" id="firstname" placeholder="ex : Jean" name="firstname">
         </div>
         <div class="form-group">
-            <label for="lastname">Lastname :</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastname">
+            <label for="lastname">Nom :</label>
+            <input type="text" id="lastname" placeholder="ex : Dupont" name="lastname">
         </div>
         <div class="form-group">
-            <label for="txtAddress">email :</label>
-            <input class="form-control" id="email" name="email" rows="10" placeholder="Enter Address">
+            <label for="txtAddress">Adresse email :</label>
+            <input id="email" name="email" rows="10" placeholder="ex : jeandupont@mail.fr">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <div class="form-group">
+            <label for="team">Equipe :</label>
+            <input id="team" name="team" rows="10" placeholder="ex : Superhéros">
+        </div>
+        <br/>
+        <button type="submit" class="btnDash btn-default">Créer l'animateur</button>
     </form>
 
   </div>

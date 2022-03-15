@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Formation;
+use App\Models\Event;
 
 
 
@@ -26,15 +27,15 @@ class DashboardAdminController extends Controller
 
     {
         $users = User::all();
-        return view('dashboardadmin', [
-            $users = DB::table('users')->simplePaginate(4)
+        $formations = Formation::all();
+        return view('dashboardadmin', compact('users', 'formations'), [
+            $users = DB::table('users')->orderByDesc('id')->simplePaginate(4),
+            $formations = DB::table('formations')->orderByDesc('id')->simplePaginate(4)
         ])
-                ->with('users',$users);
-
-           
-                
+                ->with('users',$users,'formation',$formations);        
     }
-    
+
+
 
     /**
 
@@ -54,5 +55,4 @@ class DashboardAdminController extends Controller
         return redirect('dashboardadmin')
                         ->with('success','Post deleted successfully');
     }
-
 }

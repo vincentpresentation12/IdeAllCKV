@@ -26,9 +26,7 @@ Route::middleware(['auth', 'admin'])->group(function (){
     Route::get('/admin', function(){
         return view('dashboardadmin');
     })->name('dashboard');
-   /* Route::get('/admin', [DashboardAdminController::class, 'index']
-);*/
-Route::resource('/admin', DashboardAdminController::class);
+    Route::resource('/admin', DashboardAdminController::class);
 });
 
 Route::middleware(['auth', 'animateur'])->group(function (){
@@ -42,7 +40,7 @@ Route::middleware(['auth', 'admin'])->group(function (){
 });
 
 Route::middleware(['auth', 'admin'])->group(function (){
-    Route::resource('/adminevents', EventController::class);
+    Route::resource('/adminevent', EventController::class);
 });
 
 Route::middleware(['auth', 'admin'])->group(function (){
