@@ -1,8 +1,6 @@
 <div class="col1flex">
     <img src="/images/logoJaune.png" class="logo" alt="logo"/>
     <br/>
-
-    <a href="#" class="rediraccueil">Retour à l'accueil</a>
     
 @yield('sidebarleft')
 

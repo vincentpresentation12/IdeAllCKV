@@ -2,6 +2,7 @@
     <img src="/images/logoJaune.png" class="logo" alt="logo"/>
     <br/>
 
+    <a href="/admin" class="rediraccueil">Retour à l'accueil</a>
     
 @yield('sidebarleft')
 
