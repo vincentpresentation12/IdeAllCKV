@@ -483,8 +483,12 @@ div p {
     font-size: 14px;
 }
 
+/*** FIN NORMALIZE ***/
 
 
+/*** DEBUT CSS CKV ***/
+
+/**conteneur flex de la structure **/
 .containerIA {
     display: flex; 
     flex-wrap: wrap;
@@ -531,7 +535,7 @@ div p {
     font-weight: normal;
 }
 
-.col2flex h3 {
+.col2flex h3.h3 {
     margin-left: 5%;
     margin-bottom: -10px;
     color: #FFBC40;
@@ -551,6 +555,10 @@ div p {
     justify-content: space-evenly;
     margin-top: 5%;
 }
+
+/** fin conteneur de la structure **/
+
+/** page dashboard administrateur **/
 .incomingEvents, .newAnimator, .nextFormations {
     background-color: #f9f9f9;
     padding: 5px;
@@ -562,10 +570,12 @@ div p {
 }
 
 .nextFormations {
-    width: 97%;
+    width: 96%;
     margin: auto;
     margin-top: 3%;
     padding: 10px;
+}
+.nextFormations span{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -605,6 +615,81 @@ div p {
     padding: 8px;
     border-radius: 50px;
 }
+
+/*événements*/
+.listEvent {
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.anEvent {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+}
+
+.anEvent .title{
+    color: #4A4A4A;
+    font-size: 16px; 
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.anEvent .title span {
+    display: block;
+    width: 95%;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.anEvent .title .type {
+    color: white;
+    background-color: #596DA1;
+    width:90px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    align-items: center;
+    float: right;
+    right: 0px;
+}
+
+.anEvent .informations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.anEvent .compagny {
+    width: 30%;
+    font-style: italic;
+    font-size: 14px;
+    color: #7B7B7B;
+    text-align: left;
+    margin-left: -10px;
+}
+
+.anEvent .opensession {
+    width: 40% ;
+    text-align: left;
+}
+
+.anEvent .moderate {
+    width: 20%;
+    text-align: right;
+}
+
+.anEvent hr {
+    border-bottom: 1px solid rgb(129, 150, 179, 0.5);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 45%;
+}
+/*animateurs*/
 .listAnimator {
     display: flex; 
     flex-wrap: wrap;
@@ -641,6 +726,77 @@ div p {
     text-align: left;
 }
 
+/*formations*/
+
+.listFormation {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+
+.aFormat {
+    width: 47%;
+    height: 85px;
+    margin: 5;
+    margin-bottom:3%;
+}
+
+.aFormat hr {
+    width: 65%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(129,150,279,0.2);
+    
+}
+
+.titleFormation {
+    color: #4A4A4A;
+    font-weight: 600;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+}
+.linkedto {
+    color: #545454;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+}
+
+.linkedto em {
+    color: #7B7B7B;
+    font-style: italic;
+}
+
+.typeFormation {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    color : #8997BB;
+}
+.datemoderate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.datemoderate .date {
+    font-size: 13px;
+    color: #545454;
+}
+
+.datemoderate .moderate {
+    color: #7B7B7B;
+    font-size: 12px;
+}
+
+
+/**outils supplémentaires**/
 .editsupp {width: 25%; text-align: right}
 .editsupp i { font-size: 10px; opacity: 0.7; vertical-align: middle;}
 .editsupp .edit { height: 13px; object-fit: cover; vertical-align: middle;}
@@ -673,6 +829,9 @@ div p {
     font-weight: 600;
 }
 
+
+
+/*** FIN DASHBOARD ***/
 .spacer {
     height: 10px;
 }
@@ -724,7 +883,27 @@ input#searchbox {
     font-family: nunito;
 }
 
-.allAnim, .allCours {
+.searchsort .notes {
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+}
+.searchsort .none {
+    margin: 15; padding-bottom: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4A4A4A
+}
+
+.searchsort .active {
+    margin: 15; padding-bottom: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #F7BA3F;
+    border-bottom:  3px solid;
+}
+
+.allAnim, .allCours, .allEvents {
     width: 70%;
     margin: auto;
 }
@@ -856,8 +1035,77 @@ input#searchbox {
 
 .langCours {
     text-align: center;
+    margin: 5px;
     font-size: 12px;
 }
+
+/*** AFFICHAGE DES EVENEMENTS ***/
+
+.allEvents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.displayEvents {
+   background-color: #FFF;
+   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+   border-radius: 5px;
+   max-width: 300px;
+   width: 30%;
+   padding: 20px;
+   margin: 10;
+}
+
+.nameEvents {
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #18347D;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+}
+
+.descEvents {
+    font-size: 15px;
+    color: #7b7b7b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis!important;
+}
+
+.typeEvents {
+    font-size: 14px;
+    color: #7b7b7b;
+    font-weight: 600;
+}
+
+.compEvents{
+    color: #4A4A4A;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.dateEvents {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 400;
+}
+
+.timelangEvts {
+    font-size: 12px;
+    font-weight: bold;
+    color: #c3c3c3;
+}
+
+.needsubEvts {
+    color: #545454;
+    font-size: 12px;
+}
+
+
+
 /***  CREER UN ANIMATEUR, UNE FORMATION OU UN EVENEMENT  ***
 *** AFFICHER UN ANIMATEUR, UNE FORMATION OU UN EVENEMENT ***/
 
@@ -898,3 +1146,4 @@ input#searchbox {
 .forms button {
     float: right;
 }
+

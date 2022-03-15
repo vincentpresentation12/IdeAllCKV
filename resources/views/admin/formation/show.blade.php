@@ -15,7 +15,7 @@
         <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
     </div>
     <hr/>
-    <h3>{{ $formations->title }}</h3>
+    <h3 class="h3">{{ $formations->title }}</h3>
     <div class="dashContent">
         
         <div class="forms">

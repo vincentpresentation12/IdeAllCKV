@@ -28,11 +28,13 @@ class DashboardAdminController extends Controller
     {
         $users = User::all();
         $formations = Formation::all();
-        return view('dashboardadmin', compact('users', 'formations'), [
+        $events = Event::all();
+        return view('dashboardadmin', compact('users', 'formations', 'events'), [
             $users = DB::table('users')->orderByDesc('id')->simplePaginate(4),
-            $formations = DB::table('formations')->orderByDesc('id')->simplePaginate(4)
+            $formations = DB::table('formations')->orderByDesc('startDate')->simplePaginate(4),
+            $events = DB::table('events')->orderByDesc('startDate')->simplePaginate(2),
         ])
-                ->with('users',$users,'formation',$formations);        
+                ->with('users',$users,'formations',$formations,'events',$events);        
     }
 
 

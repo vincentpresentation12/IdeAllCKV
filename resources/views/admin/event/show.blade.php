@@ -16,7 +16,7 @@
     <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
   </div>
     <hr/>
-    <h3>{{ $events->nameEvent }}</h3>
+    <h3 class="h3">{{ $events->nameEvent }}</h3>
   <div class="dashContent">
     <div class="forms">
         <div class="div-group"><strong>Titre :</strong> {{ $events->nameEvent }}</div>
