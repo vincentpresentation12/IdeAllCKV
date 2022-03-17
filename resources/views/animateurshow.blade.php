@@ -15,7 +15,6 @@
         <a class="btn btn-primary" href="javascript:window.history.go(-1);">Page précédente</a>
     </div>
     <hr/>
-    <h3 class="h3">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h3>
     <div class="dashContent">
         <div class="forms">
             <div class="div-group"><strong>Prénom :</strong> {{  Auth::user()->firstname }}</div>
