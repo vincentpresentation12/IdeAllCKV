@@ -20,7 +20,8 @@ return new class extends Migration
             $table->date('startDate');
             $table->date('endDate');
             $table->enum('type', ['virtuel', 'physique', 'physique et virtuel']);
-            $table->foreignId('idActivity')->constrained('activity');
+            $table->enum('langue', ['français', 'anglais', 'bilingue'])->default('français');
+            $table->foreignId('idActivity')->nullable()->constrained('activity');
             $table->timestamps();
         });
     }

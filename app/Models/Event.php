@@ -25,6 +25,16 @@ class Event extends Model
         'companyName',
         'descrEvent',
         'isOpen',
-        'type'
+        'type',
+        //'langue',
+        'idAnimModo'
     ];
+
+    public function user() {
+        return $this->belongsTo('User::class', 'idAnimModo');
+    }
+
+    public function users() {
+        return $this->belongsToMany('User::class', "id", "id");
+    }
 }

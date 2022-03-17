@@ -15,7 +15,9 @@ class UsersTableSeeder extends Seeder
      * @return void
      */
     public function run() {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('users')->truncate(); //for cleaning earlier data to avoid duplicate entries
+
         DB::table('users')->insert([
           'firstname' => 'Cloé',
           'lastname'=> 'Gaspar Cordeiro',
@@ -37,5 +39,7 @@ class UsersTableSeeder extends Seeder
           'user_type' => 'admin',
           'password' => Hash::make('password'),
         ]);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
       }
 }

@@ -12,7 +12,7 @@
 <div class="col2flex">
     <div class="entete">
         <h2>Éditer une formation</h2>
-        <a class="btn btn-primary" href="{{ url('adminformation') }}">Page précédente</a>
+        <a class="btn btn-primary" href="javascript:window.history.go(-1);">Page précédente</a>
     </div>
     <hr/>
     <div class="dashContent">
@@ -44,6 +44,39 @@
                     <label>Description:</label>
                     <textarea class="form-control" name="descrFormations" placeholder="description">{{ $formations->descrFormations }}</textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="startDate">Date de début :</label>
+                    <input type="date" name="startDate" value="{{ $formations->startDate }}" id="startDate" rows="10" placeholder="startDate" >
+                </div>
+                <div class="form-group">
+                    <label for="endDate">Date de fin :</label>
+                    <input type="date" name="endDate" value="{{ $formations->endDate }}" id="endDate" rows="10" placeholder="endDate" >
+                </div>
+
+                <div class="form-group">
+                <label>Type :</label>
+                <select name="type" id="type">
+                    <option value="" selected disabled hidden>{{ $formations->type }}</option>
+                    <option value="physique" name="type">Physique</option>
+                    <option value="virtuel" name="type">Virtuel</option>
+                </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Langue :</label>
+                    <select name="langue" id="langue">
+                        <option value="" selected disabled hidden>{{ $formations->langue }}</option>
+                        <option value="français">français</option>
+                        <option value="anglais">anglais</option>
+                        <option value="bilingue">bilingue</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Activité :</label>
+                    <input type="text" name="title" value="{{ $formations->idActivity }}" class="form-control" placeholder="Title">
+                </div>
+
                 <br/>
                 <button type="submit" class="btnDash btn-success">Enregistrer les modifications</button>
             </form>

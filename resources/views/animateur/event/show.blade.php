@@ -1,14 +1,14 @@
 @extends('admin.user.layout')
-@extends('layouts.sidebaradm')
+@extends('layouts.sidebaranim')
 @section('content')
 
 
 @section('sidebarleft')
-<a href="/adminuser">Les animateurs</a>
+<a href="/animateurformation">Les formations</a>
 <br/>
-<a href="/adminformation">Les formations</a>
+<a href="/animateurevent">Les évènements</a>
 <br/>
-<a href="/adminevent">Les évènements</a>
+<a href="/animateurshow">Mon profil</a>
 @endsection
 <div class="col2flex">
   <div class="entete">
@@ -21,9 +21,9 @@
     <div class="forms">
         <div class="div-group"><strong>Titre :</strong> {{ $events->nameEvent }}</div>
         <div class="div-group"><strong>Description :</strong> {{ $events->descrEvent }}</div>
-        <div class="div-group"><strong>Date de début :</strong> {{ date('j F Y',strtotime($events->startDate)) }}</div>
-        <div class="div-group"><strong>Date de fin :</strong> {{ date('j F Y',strtotime($events->endDate)) }}</div>
-        <div class="div-group"><strong>Entreprise :</strong> {{ $events->companyName }}</div>
+        <div class="div-group"><strong>Date de début :</strong> {{ $events->startDate }}</div>
+        <div class="div-group"><strong>Date de fin :</strong> {{ $events->endDate }}</div>
+        <div class="div-group"><strong>Nom de l'Entreprise :</strong> {{ $events->companyName }}</div>
         <div class="div-group"><strong>Nombre d'animateurs requis :</strong> {{ $events->nbAnimNeed }}</div>
         <div class="div-group"><strong>Nombre d'animateurs inscrits :</strong> {{ $events->nbAnimSub }}</div>
         <div class="div-group"><strong>État de la session :</strong>
@@ -38,7 +38,6 @@
         @foreach($modos as $modo)
         <div class="div-group"><strong>Modérateur :</strong> {{ $modo->firstname }} {{ $modo->lastname }}</div>
         @endforeach
-
     </div>
     <div class="moderateview">
       <a href="{{ url('/adminevent/' . $events->id . '/edit') }}" title="Edit event"><i class="fa-solid fa-pen"></i></a>

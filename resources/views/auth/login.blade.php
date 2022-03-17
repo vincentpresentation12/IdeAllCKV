@@ -8,7 +8,7 @@
                 <div class="card-header"><br /></div>
 
                 <div class="card-body">
-                    <h1>Bienvenue sur votre dashbord <strong>TheIdeAll</strong></h1>
+                    <h1>Bienvenue sur votre dashboard <strong>TheIdeAll</strong></h1>
                     <p>Identifiez-vous pour accéder à votre compte.</p>
                     <form method="POST" action="{{ route('login') }}">
                         <h2>Se connecter</h2>

@@ -69,7 +69,8 @@ class FormationController extends Controller
             'startDate'=> $request->get('startDate'),
             'endDate'=> $request->get('endDate'),
             'type'=> $request->get('type'),
-            'idActivity'=> $request->get('idActivity')
+            'langue' => $request->get('langue'),
+            'idActivity'=> $request->get('idActivity', null)
         ]);
 
         $formations->save();

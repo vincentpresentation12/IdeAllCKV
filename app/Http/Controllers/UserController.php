@@ -75,6 +75,11 @@ class UserController extends Controller
             'email'=> $request->get('email'),
             'password'=> Hash::make('password'),
             'team'=> $request->get('team'),
+            'phone' => $request->get('phone', null),
+            'isBilingual' => $request->get('isBilingual'),
+            'user_type' => $request->get('user_type'),
+            'type' => $request->get('type'),
+            'isActive' => $request->get('isActive'),
         ]);
 
         $user->save();

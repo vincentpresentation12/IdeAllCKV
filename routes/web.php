@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\FormationAnimateurController;
+use App\Http\Controllers\DashboardAnimateurController;
+use App\Http\Controllers\EventAnimateurController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 /*
@@ -20,6 +23,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::middleware(['auth', 'admin'])->group(function (){
+    Route::get('/home', function(){
+        return redirect('/admin');
+    })->name('dashboard');
+});
+
+Route::middleware(['auth', 'animateur'])->group(function (){
+    Route::get('/home', function(){
+        return redirect('/animateur');
+    })->name('dashboard');
+});
+
 Auth::routes();
 
 Route::middleware(['auth', 'admin'])->group(function (){
@@ -33,6 +49,7 @@ Route::middleware(['auth', 'animateur'])->group(function (){
     Route::get('/animateur', function(){
         return view('dashboardanimateur');
     })->name('dashboard');
+    Route::resource('/animateur', DashboardAnimateurController::class);
 });
 
 Route::middleware(['auth', 'admin'])->group(function (){
@@ -45,4 +62,18 @@ Route::middleware(['auth', 'admin'])->group(function (){
 
 Route::middleware(['auth', 'admin'])->group(function (){
     Route::resource('/adminformation', FormationController::class);
+});
+
+Route::middleware(['auth', 'animateur'])->group(function (){
+    Route::get('/animateurshow',function(){
+        return view('animateurshow');
+    })->name('profil');
+});
+
+Route::middleware(['auth', 'animateur'])->group(function (){
+    Route::resource('/animateurevent', EventAnimateurController::class);
+});
+
+Route::middleware(['auth', 'animateur'])->group(function (){
+    Route::resource('/animateurformation', FormationAnimateurController::class);
 });

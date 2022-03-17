@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Formation;
 use App\Models\Event;
-
-
+use Illuminate\Cache\RateLimiting\Limit;
 
 class DashboardAdminController extends Controller
 
@@ -27,14 +26,13 @@ class DashboardAdminController extends Controller
 
     {
         $users = User::all();
-        $formations = Formation::all();
-        $events = Event::all();
+        $formations = Formation::all()->sortBy("startDate")->forPage(1,3);
+        $events = Event::all()->sortBy("startDate")->forPage(1,2);
         return view('dashboardadmin', compact('users', 'formations', 'events'), [
-            $users = DB::table('users')->orderByDesc('id')->simplePaginate(4),
-            $formations = DB::table('formations')->orderByDesc('startDate')->simplePaginate(4),
-            $events = DB::table('events')->orderByDesc('startDate')->simplePaginate(2),
+            $users = DB::table('users')->orderByDesc('id')->Paginate(4),
         ])
-                ->with('users',$users,'formations',$formations,'events',$events);        
+
+                ->with('users',$users,'formations',$formations,'events',$events);
     }
 
 
@@ -54,7 +52,9 @@ class DashboardAdminController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect('dashboardadmin')
+        Event::destroy($id);
+        Formation::destroy($id);
+        return redirect('admin')
                         ->with('success','Post deleted successfully');
     }
 }

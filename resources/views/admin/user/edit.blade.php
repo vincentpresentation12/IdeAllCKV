@@ -12,13 +12,12 @@
 <div class="col2flex">
     <div class="entete">
         <h2>Éditer un nouvel animateur</h2>
-        <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
+        <a class="btn btn-primary" href="javascript:window.history.go(-1);">Page précédente</a>
     </div>
-    <hr/>      
-    
+    <hr/>
+
         <div class="dashContent">
 
-        
             @if ($errors->any())
 
                 <div class="alert alert-danger">
@@ -45,7 +44,6 @@
 
                 @method('PATCH')
 
-                
                 <div class="form-group">
 
                     <label>Prénom :</label>
@@ -67,16 +65,40 @@
                     <input type="text" name="team" value="{{ $users->team }}" class="form-control" placeholder="team">
 
                 </div>
+                <div class="form-group">
+                    <label for="isBilingual">Bilingue :</label>
+                    <select name="isBilingual" id="isBilingual">
+                        <option value="0" name="isBilingual">Non</option>
+                        <option value="1" name="isBilingual">Oui</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type :</label>
+                    <select name="type" id="type">
+                        <option value="" selected disabled hidden>{{ $users->type }}</option>
+                        <option value="physique" name="type">Physique</option>
+                        <option value="virtuel" name="type">Virtuel</option>
+                        <option value="physique et virtuel" name="type">Virtuel & Physique</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="isActive">Actif :</label>
+                    <select name="isActive" id="isActive">
+                        <option value="0" name="isActive">Non</option>
+                        <option value="1" name="isActive">Oui</option>
+                    </select>
+                </div>
                 <br/>
-                
+
                 <button type="submit" class="btnDash btn-success">Enregistrer les modifications</button>
             </form>
-            
-        
+
+
         <form method="POST" action="{{ url('/adminuser' . '/' . $users->id) }}" accept-charset="UTF-8">
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
-        <button type="submit" class="btnS btn-danger" title="Delete Student" onclick="return confirm('Confirm delete')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>    
+        <button type="submit" class="btnS btn-danger" title="Delete Student" onclick="return confirm('Confirm delete')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
         </form>
 
         </div>

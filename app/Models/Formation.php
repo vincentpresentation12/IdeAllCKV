@@ -20,6 +20,7 @@ class Formation extends Model
         'startDate',
         'endDate',
         'type',
+        'langue',
         'idActivity',
     ];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -43,7 +44,8 @@ class EventController extends Controller
     public function create()
 
     {
-        return view('admin.event.create');
+        $users = User::all();
+        return view('admin.event.create', compact('users'));
     }
 
 
@@ -63,18 +65,21 @@ class EventController extends Controller
     public function store(Request $request)
 
     {
+
+
         $event = new Event([
             'nameEvent' => $request->get('nameEvent'),
             'startDate' => $request->get('startDate'),
             'endDate' => $request->get('endDate'),
-            'duration' => '10:00:00',
             'nbAnimNeed' => $request->get('nbAnimNeed'),
             'nbAnimSub' => 0,
             'nbParticipant' => 0,
             'companyName' => $request->get('companyName'),
             'descrEvent' => $request->get('descrEvent'),
-            'isOpen' => false,
-            'type' => $request->get('type')
+            'isOpen' => $request->get('isOpen'),
+            'type' => $request->get('type'),
+            'langue' => $request->get('langue'),
+            'idAnimModo' => $request->get('idAnimModo', null)
         ]);
 
         $event->save();
@@ -100,9 +105,9 @@ class EventController extends Controller
     public function show($id)
     {
         $events = Event::find($id);
-        return view('admin.event.show')->with('events',$events);
+        $modos = User::where('users.id',$events->idAnimModo)->get();
+        return view('admin.event.show', compact('events', 'modos'));
     }
-
 
 
     /**
@@ -120,7 +125,9 @@ class EventController extends Controller
     public function edit($id)
     {
         $events = Event::find($id);
-        return view('admin.event.edit')->with('events',$events);
+        $modos = User::where('users.id',$events->idAnimModo)->get();
+        $users = User::all();
+        return view('admin.event.edit', compact('events', 'modos', 'users'));
     }
 
 

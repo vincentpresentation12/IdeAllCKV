@@ -21,16 +21,16 @@ return new class extends Migration
             $table->time('duration')->default('00:00:00');
             $table->smallInteger('nbAnimNeed');
             $table->smallInteger('nbAnimSub')->default(0);
-            $table->smallInteger('nbParticipant');
+            $table->smallInteger('nbParticipant')->default(0);
             $table->string('companyName');
             $table->text('descrEvent');
-            $table->boolean('isOpen');
+            $table->boolean('isOpen')->default(0);
             $table->enum('type',['virtuel', 'physique', 'physique et virtuel']);
-            $table->enum('langue', ['français', 'anglais', 'bilingue']);
+            $table->enum('langue', ['français', 'anglais', 'bilingue'])->default('français');
 
             $table->unsignedBigInteger('idAnimModo')->nullable();
-            $table->foreign('idAnimModo')->references('id')->on('users')->onDelete('cascade');
-            //$table->foreignId('idAnimModo')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');;
+            $table->foreign('idAnimModo')->references('id')->on('users');
+            //$table->foreignId('idAnimModo')->nullable()->constrained('users');
 
             $table->timestamps();
         });

@@ -8,7 +8,7 @@
 <br/>
 <a href="/adminformation">Les formations</a>
 <br/>
-<a href="/adminevent">Les évènements</a>
+<a href="/adminevent">Les événements</a>
 @endsection
     <div class="col2flex">
         <div class="entete">
@@ -24,25 +24,30 @@
                     @foreach($events as $event)
                     <div class="anEvent">
                         <div class="title">
-                            <span>{{ $event->nameEvent }}</span>
+                            <span><a href="{{ url('/adminevent/' . $event->id) }}">{{ $event->nameEvent }}</a></span>
                             <div class="type">{{ $event->type }}</div>
                         </div>
                         <div class="informations">
                             <div class="compagny">{{ $event->companyName }}</div>
-                            <div class="opensession">ouvrir la session</div>
+                                @if($event->isOpen == 0)
+                                    <div class="opensession">Session Fermée</div>
+                                @else
+                                    <div class="opensession">Session Ouverte</div>
+                                @endif
                             <div class="moderate">
-                             <a href="{{ url('/adminevent/edit') }}"><i class="fa-solid fa-pen"></i></a>
+                             <a href="{{ url('/adminevent/' . $event->id . '/edit') }}"><i class="fa-solid fa-pen"></i></a>
                                 <form method="POST" action="{{ url('/admin' . '/' . $event->id) }}" accept-charset="UTF-8" style="display:inline">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
-                                <a title="Delete Event" onclick="return confirm('Confirm delete?')"><i class="fa-solid fa-trash-can"></i></a></form>
+                                <button title="Delete Event" onclick="return confirm('Confirm delete?')"><i class="fa-solid fa-trash-can"></i></button></form>
                             </div>
                         </div>
                         <hr/>
                     </div>
                     @endforeach
-                    <a href="/adminevent" class="voirplus">Voir tous les événements</a>
                 </div>
+                <div class="spacer"></div>
+                <a href="/adminevent" class="voirplus">Voir tous les événements</a>
             </div>
             <div class="newAnimator">
                 <h3>Nos animateurs</h3>
@@ -51,13 +56,13 @@
                 <div class="listAnimator">
                 @foreach($users as $user)
                     <div class="anAnimator">
-                        <div class="fullName">{{ $user->firstname }} {{ $user->lastname }}</div>
+                        <div class="fullName"><a href="{{ url('/adminuser/' . $user->id) }}">{{ $user->firstname }} {{ $user->lastname }}</a></div>
                         <div class="editsupp">
-                            <a href="{{ url('/adminuser/edit') }}"><i class="fa-solid fa-pen"></i></a>
+                            <a href="{{ url('/adminuser/' . $user->id . '/edit') }}"><i class="fa-solid fa-pen"></i></a>
                             <form method="POST" action="{{ url('/admin' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <a title="Delete Animator" onclick="return confirm('Confirm delete?')"><i class="fa-solid fa-trash-can"></i></a></form>
+                            <button title="Delete Animator" onclick="return confirm('Confirm delete?')"><i class="fa-solid fa-trash-can"></i></button></form>
                         </div>
                         <div class="animType">{{ $user->type }} </div>
                         <div class="isBilingual">
@@ -69,7 +74,7 @@
                             @endif
                         </div>
                         <div class="isActive">
-                            <div class="active"></div>
+                            <div class="actif"></div>
                         </div>
                     </div>
                 @endforeach
@@ -80,26 +85,33 @@
 
             <div class="nextFormations">
                 <span>
-                    <h3><a href="/adminformation">Les formations</a></h3>
-                    <a href="/adminformation/create" class="btnDash btnD btn-primary">Ajouter une formation<a>
+                    <h3>Les formations</h3>
+                    <a href="/adminformation/create" class="btnDash btnD btn-primary">Ajouter une formation</a>
                 </span>
-                
+
                 <div class="listFormation">
                 @foreach($formations as $formation)
                     <div class="aFormat">
-                        <div class="titleFormation">{{ $formation->title }} {{ $formation->descrFormation }}</div>
+                        <div class="titleFormation"><a href="{{ url('/adminformation/' . $formation->id) }}">{{ $formation->title }} {{ $formation->descrFormation }}</a></div>
                         <div class="linkedto">Reliée à <em>Nom de l'animation</em></div>
                         <div class="typeFormation">{{ $formation->type }} </div>
                         <div class="dateAndModerate">
-                            <div class="eventdate">Date de l'évent</div>
-                            
+                            <div class="eventdate">{{ date('j F Y',strtotime($event->startDate)) }}</div>
+                            <div class="moderatef">
+                                <a href="{{ url('/adminformation/' . $formation->id . '/edit') }}"><i class="fa-solid fa-pen"></i></a>
+                                <form method="POST" action="{{ url('/admin' . '/' . $formation->id) }}" accept-charset="UTF-8" style="display:inline">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button title="Delete Animator" onclick="return confirm('Confirm delete?')"><i class="fa-solid fa-trash-can"></i></button></form>
+                            </div>
                         </div>
 
                         <hr/>
-                        
+
                     </div>
                 @endforeach
                 </div>
+                <a href="/adminformation" class="voirplus">Voir toutes les formations</a>
             </div>
 
         </div>

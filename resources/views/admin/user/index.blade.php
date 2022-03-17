@@ -11,7 +11,7 @@
 <div class="col2flex">
     <div class="entete">
         <h2>Les animateurs</h2>
-        <a class="btn btn-primary" href="/admin">Page précédente</a>
+        <a class="btn btn-primary" href="javascript:window.history.go(-1);">Page précédente</a>
     </div>
     <hr/>
    
@@ -53,7 +53,7 @@
 
                 <div class="animActive">
                     <div class="isActive">
-                        @if ($user->isActif == 0)
+                        @if ( $user->isActive == 0 )
                         <div class="inactive">Inactif</div>
                         @else 
                         <div class="active">Actif</div>

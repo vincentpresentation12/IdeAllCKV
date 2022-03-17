@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('isBilingual')->default(0);
             $table->date('lastEvent')->nullable();
             $table->string('password');
-            $table->string('user_type')->default('animateur');
+            $table->enum('user_type', ['animateur', 'admin'])->default('animateur');
             $table->enum('type',['virtuel', 'physique', 'physique et virtuel']);
             $table->boolean('isActive')->default(0);
             $table->rememberToken();

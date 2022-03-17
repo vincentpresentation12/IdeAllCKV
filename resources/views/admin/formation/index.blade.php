@@ -12,29 +12,29 @@
 <div class="col2flex">
     <div class="entete">
         <h2>Les Formations</h2>
-        <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
+        <a class="btn btn-primary" href="javascript:window.history.go(-1);">Page précédente</a>
     </div>
-    <hr/>     
-    
+    <hr/>
+
     <div class="searchsort">
         <input id="searchbox" onkeyup="search_anim()" type="text"
-        name="search" placeholder="Rechercher..." class="search"> 
-     
+        name="search" placeholder="Rechercher..." class="search">
+
         <select name="" id="">
         <option value="">Tous</option>
-            
+
         </select>
-        
+
 
         <a href="{{ url('/adminformation/create') }}" class="btnDash btn-primary">Ajouter une formation</a>
-      
+
     </div>
     <div class="dashContent">
         <div class="allCours">
         @foreach($formations as $formation)
         <div class="displayCours">
             <div class="moderateButtons">
-                <a href="{{ url('/adminformation/' . $formation->id) }}" title="View formation"><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                <a href="{{ url('/adminformation/' . $formation->id) }}" title="View formation"><i class="fa fa-eye" aria-hidden="true"></i></a>
                 <a href="{{ url('/adminformation/' . $formation->id . '/edit') }}" title="Edit formation"><i class="fa-solid fa-pen" aria-hidden="true"></i></a>
                 <form method="POST" action="{{ url('/adminformation' . '/' . $formation->id) }}" accept-charset="UTF-8" style="display:inline">
                     {{ method_field('DELETE') }}
@@ -45,13 +45,22 @@
             <div class="titleCours">{{ $formation->title }}</div>
             <div class="subCours">{{ $formation->descrFormations }}</div>
             <div class="typeCours">{{ $formation->type }}</div>
-            <div class="dateCours">date et heure</div>
-            <div class="langCours">img langue</div>
+            <div class="dateCours">{{ date('j F Y',strtotime($formation->startDate)) }}</div>
+            <div class="lang">
+                @if ( $formation->langue == "français" )
+                            <img src="/images/fr.png" class="langimg" alt="fr"/>
+                @elseif ($formation->langue == "anglais")
+                            <img src="images/en.png" class="langimg" alt="en"/>
+                @else
+                            <img src="/images/fr.png" class="langimg" alt="fr"/>
+                            <img src="images/en.png" class="langimg" alt="en"/>
+                @endif
+                </div>
         </div>
         @endforeach
-        </div>    
+        </div>
 
-                
+
     </div>
 </div>
 @endsection

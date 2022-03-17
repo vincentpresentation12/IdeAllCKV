@@ -12,7 +12,7 @@
 <div class="col2flex">
 <div class="entete">
         <h2>Créer une nouvelle formation</h2>
-        <a class="btn btn-primary" href="{{ route('adminuser.index') }}">Page précédente</a>
+        <a class="btn btn-primary" href="javascript:window.history.go(-1);">Page précédente</a>
     </div>
     <hr/>
             <div class="dashContent">
@@ -20,11 +20,11 @@
       <form action="{{ url('adminformation') }}" method="post" class="forms">
       @csrf
         <div class="form-group">
-            <label for="title">Titre:</label>
+            <label for="title">Titre :</label>
             <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
         </div>
         <div class="form-group">
-            <label for="descrFormations">Description rapide:</label>
+            <label for="descrFormations">Description rapide :</label>
             <input type="text" class="form-control" id="descrFormations" placeholder="Enter description" name="descrFormations">
         </div>
         <div class="form-group">
@@ -36,11 +36,23 @@
             <input type="date" name="endDate" id="endDate" rows="10" placeholder="endDate" >
         </div>
         <div class="form-group">
-            <label for="type">Type de l'évènement:</label>
-            <input class="form-control" id="type" name="type" rows="10" placeholder="type">
+            <label for="type">Type :</label>
+                <select name="type" id="type">
+                    <option value="" selected disabled hidden>type </option>
+                    <option value="physique" name="type">Physique</option>
+                    <option value="virtuel" name="type">Virtuel</option>
+                </select>
         </div>
         <div class="form-group">
-            <label for="idActivity">Activité:</label>
+            <label for="langue">Langue :</label>
+            <select name="langue" id="langue">
+                    <option value="français" name="langue">Français</option>
+                    <option value="anglais" name="langue">Anglais</option>
+                    <option value="bilingue" name="langue">Bilingue</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="idActivity">Activité :</label>
             <input class="form-control" id="idActivity" name="idActivity" rows="10" placeholder="idActivity">
         </div>
         <br/>
