@@ -71,8 +71,8 @@
             </div>
         <br/>
         <button type="submit" class="btnDash btn-default">Créer l'évènement</button>
-    </form>
+        </form>
 
-  </div>
+    </div>
 </div>
 @stop

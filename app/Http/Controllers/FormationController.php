@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Formation;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -43,7 +44,8 @@ class FormationController extends Controller
     public function create()
 
     {
-        return view('admin.formation.create');
+        $activities = Activity::all();
+        return view('admin.formation.create', compact('activities'));
     }
 
 

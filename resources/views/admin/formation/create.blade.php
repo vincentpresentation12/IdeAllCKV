@@ -53,7 +53,12 @@
         </div>
         <div class="form-group">
             <label for="idActivity">Activité :</label>
-            <input class="form-control" id="idActivity" name="idActivity" rows="10" placeholder="idActivity">
+            <select name="idActivity" id="idActivity">
+                    <option value="" selected disabled hidden> Activités </option>
+                    @foreach($activities as $activity)
+                        <option value="{{ $activity->id}}">{{ $activity->nameActivity }}</option>
+                    @endforeach
+                </select>
         </div>
         <br/>
         <button type="submit" class="btnDash btn-default">Créer la formation</button>
