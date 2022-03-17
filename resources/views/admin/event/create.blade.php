@@ -46,7 +46,7 @@
         <div class="form-group">
             <label for="type">Type :</label>
                 <select name="type" id="type">
-                    <option value="" selected disabled hidden>type </option>
+                    <option value="" selected disabled hidden>Sélectionner un type </option>
                     <option value="physique" name="type">Physique</option>
                     <option value="virtuel" name="type">Virtuel</option>
                 </select>
@@ -63,16 +63,28 @@
         <div class="form-group">
                 <label>Modérateur :</label>
                 <select name="idAnimModo" id="idAnimModo">
-                    <option value="" selected disabled hidden> Animateurs </option>
+                    <option value="" selected disabled hidden>Sélectionner un modérateur </option>
                     @foreach($users as $user)
+                        @if($user->user_type == 'admin')
                         <option value="{{ $user->id}}">{{ $user->firstname }} {{ $user->lastname }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
+
+        <div class="form-group">
+            <label>Formations :</label>
+            <select name="idFormation" id="idFormation">
+                <option value="" selected disabled hidden>Sélectionner une formation </option>
+                @foreach($formations as $formation)
+                        <option value="{{ $formation->id}}">{{ $formation->title }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <br/>
         <button type="submit" class="btnDash btn-default">Créer l'évènement</button>
         </form>
-
     </div>
 </div>
 @stop

@@ -38,7 +38,7 @@
         <div class="form-group">
             <label for="type">Type :</label>
                 <select name="type" id="type">
-                    <option value="" selected disabled hidden>type </option>
+                    <option value="" selected disabled hidden>Sélectionner un type </option>
                     <option value="physique" name="type">Physique</option>
                     <option value="virtuel" name="type">Virtuel</option>
                 </select>
@@ -54,7 +54,7 @@
         <div class="form-group">
             <label for="idActivity">Activité :</label>
             <select name="idActivity" id="idActivity">
-                    <option value="" selected disabled hidden> Activités </option>
+                    <option value="" selected disabled hidden>Sélectionner une activité </option>
                     @foreach($activities as $activity)
                         <option value="{{ $activity->id}}">{{ $activity->nameActivity }}</option>
                     @endforeach

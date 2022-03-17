@@ -56,7 +56,7 @@
         <div class="form-group">
             <label for="type">Type :</label>
                 <select name="type" id="type">
-                    <option value="" selected disabled hidden>type </option>
+                    <option value="" selected disabled hidden>Sélectionner un type </option>
                     <option value="physique" name="type">Physique</option>
                     <option value="virtuel" name="type">Virtuel</option>
                     <option value="physique et virtuel" name="type">Virtuel & Physique</option>

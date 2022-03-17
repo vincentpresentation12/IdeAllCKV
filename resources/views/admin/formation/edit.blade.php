@@ -74,7 +74,15 @@
                 </div>
                 <div class="form-group">
                     <label>Activité :</label>
-                    <input type="text" name="title" value="{{ $formations->idActivity }}" class="form-control" placeholder="Title">
+                    <select name="idAnimModo" id="idAnimModo">
+                    @foreach($currentActivities as $currentActivity)
+                        <option value="" selected disabled hidden>{{ $currentActivity->nameActivity }}</option>
+                    @endforeach
+
+                    @foreach($activities as $activity)
+                        <option value="{{ $activity->id}}">{{ $activity->nameActivity }}</option>
+                    @endforeach
+                </select>
                 </div>
 
                 <br/>

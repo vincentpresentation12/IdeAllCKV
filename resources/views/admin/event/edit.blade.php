@@ -101,7 +101,22 @@
                     @endforeach
 
                     @foreach($users as $user)
+                        @if($user->user_type == 'admin')
                         <option value="{{ $user->id}}">{{ $user->firstname }} {{ $user->lastname }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Formations :</label>
+                <select name="idFormation" id="idFormation">
+                    @foreach($currentFormations as $currentFormation)
+                        <option value="" selected disabled hidden>{{ $currentFormation->title }}</option>
+                    @endforeach
+
+                    @foreach($formations as $formation)
+                        <option value="{{ $formation->id}}">{{ $formation->title }}</option>
                     @endforeach
                 </select>
             </div>

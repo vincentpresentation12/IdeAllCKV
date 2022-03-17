@@ -32,7 +32,11 @@
             @endif
             </div>
             <div class="div-group"><strong>Langue :</strong> {{ ucfirst($formations->langue) }}</div>
-            <div class="div-group"><strong>Activité :</strong> {{ $formations->idActivity }}</div>
+            <div class="div-group"><strong>Activité reliée :</strong>
+            @foreach($activities as $activity)
+                 {{ $activity->nameActivity }}
+            @endforeach  
+            </div>
         </div>
       </div>
 </div>

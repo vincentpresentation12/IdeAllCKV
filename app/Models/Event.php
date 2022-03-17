@@ -27,7 +27,8 @@ class Event extends Model
         'isOpen',
         'type',
         //'langue',
-        'idAnimModo'
+        'idAnimModo',
+        'idFormation',
     ];
 
     public function user() {

@@ -98,7 +98,8 @@ class FormationController extends Controller
     public function show($id)
     {
         $formations = Formation::find($id);
-        return view('admin.formation.show')->with('formations',$formations);
+        $activities = Activity::where('activity.id',$formations->idActivity)->get();
+        return view('admin.formation.show', compact('formations', 'activities'));
     }
 
 
@@ -118,7 +119,9 @@ class FormationController extends Controller
     public function edit($id)
     {
         $formations = Formation::find($id);
-        return view('admin.formation.edit')->with('formations',$formations);
+        $activities = Activity::all();
+        $currentActivities = Activity::where('activity.id',$formations->idActivity)->get();
+        return view('admin.formation.edit', compact('formations', 'activities', 'currentActivities'));
     }
 
 

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('event_formation', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idEvent')->constrained('events');
-            $table->foreignId('idFormation')->constrained('formations');
+            //$table->foreignId('idEvent')->constrained('events');
+            //$table->foreignId('idFormation')->constrained('formations');
             $table->timestamps();
         });
     }

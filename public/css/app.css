@@ -687,12 +687,9 @@ div p {
     padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    justify-content: space-between;
     margin-top: 3%;
     height: 210px!important;
     overflow: auto;
-    display: flex; 
-    flex-wrap: wrap;
 }
 
 .listEvent::-webkit-scrollbar { width: 0px!important }

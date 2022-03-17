@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Models\Formation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,6 +50,7 @@ class EventAnimateurController extends Controller
     {
         $events = Event::find($id);
         $modos = User::where('users.id',$events->idAnimModo)->get();
-        return view('animateur.event.show', compact('events', 'modos'));
+        $formations = Formation::where('formations.id', $events->idFormation)->get();
+        return view('admin.event.show', compact('events', 'modos', 'formations'));
     }
 }

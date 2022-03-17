@@ -34,9 +34,13 @@
         @endif
         </div>
         <div class="div-group"><strong>Type :</strong> Évènement {{ $events->type }}</div>
-        <div class="div-group"><strong>Langue :</strong> {{  ucfirst($events->langue) }}</div>
+        <div class="div-group"><strong>Langue :</strong> {{  ucfirst($events->langue) }} </div>
         @foreach($modos as $modo)
         <div class="div-group"><strong>Modérateur :</strong> {{ $modo->firstname }} {{ $modo->lastname }}</div>
+        @endforeach
+
+        @foreach($formations as $formation)
+        <div class="div-group"><strong>Formations :</strong> {{ $formation->title }}</div>
         @endforeach
 
     </div>

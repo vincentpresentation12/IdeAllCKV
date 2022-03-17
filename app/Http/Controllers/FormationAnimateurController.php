@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Formation;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 
@@ -46,7 +47,8 @@ class FormationAnimateurController extends Controller
     public function show($id)
     {
         $formations = Formation::find($id);
-        return view('animateur.formation.show')->with('formations',$formations);
+        $activities = Activity::where('activity.id',$formations->idActivity)->get();
+        return view('animateur.formation.show', compact('formations', 'activities'));
     }
 
 }

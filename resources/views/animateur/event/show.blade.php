@@ -38,6 +38,9 @@
         @foreach($modos as $modo)
         <div class="div-group"><strong>Modérateur :</strong> {{ $modo->firstname }} {{ $modo->lastname }}</div>
         @endforeach
+        @foreach($formations as $formation)
+        <div class="div-group"><strong>Formations :</strong> {{ $formation->title }}</div>
+        @endforeach
     </div>
     <div class="moderateview">
       <a href="{{ url('/adminevent/' . $events->id . '/edit') }}" title="Edit event"><i class="fa-solid fa-pen"></i></a>

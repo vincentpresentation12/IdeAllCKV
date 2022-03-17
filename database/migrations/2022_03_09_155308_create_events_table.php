@@ -31,6 +31,9 @@ return new class extends Migration
             $table->unsignedBigInteger('idAnimModo')->nullable();
             $table->foreign('idAnimModo')->references('id')->on('users');
 
+            $table->unsignedBigInteger('idFormation')->nullable();
+            $table->foreign('idFormation')->references('id')->on('formations');
+
             $table->timestamps();
         });
     }

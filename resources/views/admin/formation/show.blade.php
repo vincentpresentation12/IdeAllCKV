@@ -31,8 +31,11 @@
             @endif
             </div>
             <div class="div-group"><strong>Langue :</strong> {{  ucfirst($formations->langue) }}</div>
-            <div class="div-group"><strong>Activité :</strong> {{ $formations->idActivity }}</div>
-
+            <div class="div-group"><strong>Activité reliée :</strong>
+            @foreach($activities as $activity)
+                 {{ $activity->nameActivity }}
+            @endforeach  
+            </div>
         </div>
         <div class="moderateview">
             <a href="{{ url('/adminformation/' . $formations->id . '/edit') }}" title="Edit formation"><i class="fa-solid fa-pen"></i></a>
@@ -42,7 +45,7 @@
                     <button type="submit" class="btnS btn-danger btn-sm" title="Delete Formation" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </form>
         </div>
-      </div>
+    </div>
 
 </div>
 @stop
