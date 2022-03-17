@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
           'email' => 'admin@gmail.com',
           'user_type' => 'admin',
           'password' => Hash::make('password'),
+          'type' => 'virtuel',
         ]);
         DB::table('users')->insert([
           'firstname' => 'Vincent',
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
           'email' => 'animateur@gmail.com',
           'user_type' => 'animateur',
           'password' => Hash::make('password'),
+          'type' => 'virtuel',
         ]);
         DB::table('users')->insert([
           'firstname' => 'Karim',
@@ -37,6 +39,7 @@ class UsersTableSeeder extends Seeder
           'email' => 'admin2@gmail.com',
           'user_type' => 'admin',
           'password' => Hash::make('password'),
+          'type' => 'virtuel',
         ]);
 
       }
