@@ -14,18 +14,15 @@ class ActivityTableSeeder extends Seeder
      * @return void
      */
     public function run() {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('activity')->truncate(); //for cleaning earlier data to avoid duplicate entries
 
         DB::table('activity')->insert([
-          'nameActivity' => 'yo',
+          'nameActivity' => 'Attaque',
           'priceActivity'=> '5',
-          'descrActivity' => 'peut etre',
+          'descrActivity' => 'Jeux de famille',
           'type' => 'virtuel',
           'duration' => '00:01:00',
           'urlActivity' => 'hello'
         ]);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
       }
 }

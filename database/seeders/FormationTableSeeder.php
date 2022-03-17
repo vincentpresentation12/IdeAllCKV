@@ -13,7 +13,6 @@ class FormationTableSeeder extends Seeder
      * @return void
      */
     public function run() {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('formations')->truncate(); //for cleaning earlier data to avoid duplicate entries
 
         DB::table('formations')->insert([
@@ -44,8 +43,8 @@ class FormationTableSeeder extends Seeder
           'idActivity' => '1',
         ]);
         DB::table('formations')->insert([
-          'title' => "J'ai plus d'idée",
-          'descrFormations'=> 'Aider moi !!!!!',
+          'title' => "Visite guidée",
+          'descrFormations'=> "Fomration d'animation de visite guidée",
           'startDate' => '2022-03-20',
           'endDate' => '2022-03-21',
           'type' => 'virtuel',
@@ -53,8 +52,8 @@ class FormationTableSeeder extends Seeder
           'idActivity' => '1',
         ]);
         DB::table('formations')->insert([
-          'title' => 'Help!!!!!!',
-          'descrFormations'=> 'Someone here??? PLease',
+          'title' => 'Laravel',
+          'descrFormations'=> 'Vient apprednre le développement avec le groupe 5',
           'startDate' => '2022-03-17',
           'endDate' => '2022-03-17',
           'type' => 'virtuel',
@@ -62,6 +61,5 @@ class FormationTableSeeder extends Seeder
           'idActivity' => '1',
         ]);
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
       }
 }
