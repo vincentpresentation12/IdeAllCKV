@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_event', function (Blueprint $table) {
-            //$table->foreignId('idUser')->constrained('users');
+            $table->foreignId('idUser')->constrained('users');
             $table->foreignId('idEvent')->constrained('events');
             $table->timestamps();
         });

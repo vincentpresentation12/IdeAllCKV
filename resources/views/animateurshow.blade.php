@@ -15,6 +15,7 @@
         <a class="btn btn-primary" href="javascript:window.history.go(-1);">Page précédente</a>
     </div>
     <hr/>
+    <h3 class="h3">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h3>
     <div class="dashContent">
         <div class="forms">
             <div class="div-group"><strong>Prénom :</strong> {{  Auth::user()->firstname }}</div>
@@ -27,11 +28,29 @@
                 {{ Auth::user()->team }}
             @endif
             </div>
-                <div class="div-group"><strong>Statut :</strong> Animateur {{Auth::user()->type }}</div>
+            <div class="div-group"><strong>Téléphone :</strong> {{ Auth::user()->phone }}</div>
+            <div class="div-group"><strong>Bilingue :</strong>
+            @if(Auth::user()->isBilingual == 0)
+                Non
+            @else
+                Oui
+            @endif
             </div>
-            <div class="moderateview">
+
+            <div class="div-group"><strong>Type :</strong> Animateur {{ Auth::user()->type }}</div>
+            <div class="div-group"><strong>Statut :</strong>
+            @if(Auth::user()->isActive == 0)
+                Inactif
+            @else
+                Actif
+            @endif
+        
             </div>
         </div>
 
-  </div>
-  @stop
+        <div class="moderateview"></div>
+
+    </div>
+
+</div>
+@stop

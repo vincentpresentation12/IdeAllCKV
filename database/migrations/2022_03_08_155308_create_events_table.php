@@ -30,7 +30,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('idAnimModo')->nullable();
             $table->foreign('idAnimModo')->references('id')->on('users');
-            //$table->foreignId('idAnimModo')->nullable()->constrained('users');
 
             $table->timestamps();
         });

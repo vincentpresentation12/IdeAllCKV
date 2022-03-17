@@ -45,26 +45,25 @@
                 @method('PATCH')
 
                 <div class="form-group">
-
                     <label>Prénom :</label>
-
                     <input type="text" name="firstname" value="{{ $users->firstname }}" class="form-control" placeholder="ex: Jean">
-
                 </div>
-                <div class="form-group">
 
+                <div class="form-group">
                     <label>Nom :</label>
-
                     <input class="form-control" name="lastname" placeholder="Body" value="{{ $users->lastname }}">
-
                 </div>
+
                 <div class="form-group">
-
                     <label>Équipe :</label>
-
                     <input type="text" name="team" value="{{ $users->team }}" class="form-control" placeholder="team">
-
                 </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone :</label>
+                    <input type="text" name="phone" value="{{ $users->phone }}" placeholder="ex : 0123456789">
+                </div>
+
                 <div class="form-group">
                     <label for="isBilingual">Bilingue :</label>
                     <select name="isBilingual" id="isBilingual">
@@ -72,10 +71,20 @@
                         <option value="1" name="isBilingual">Oui</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="user_type">Droit :</label>
+                    <select name="user_type" id="user_type">
+                        <option value="" selected disabled hidden>{{ ucfirst($users->user_type) }}</option>
+                        <option value="animateur">Animateur</option>
+                        <option value="admin">Administrateur</option>
+                        </select>
+                </div>
+
                 <div class="form-group">
                     <label for="type">Type :</label>
                     <select name="type" id="type">
-                        <option value="" selected disabled hidden>{{ $users->type }}</option>
+                        <option value="" selected disabled hidden>{{ ucfirst($users->type) }}</option>
                         <option value="physique" name="type">Physique</option>
                         <option value="virtuel" name="type">Virtuel</option>
                         <option value="physique et virtuel" name="type">Virtuel & Physique</option>
@@ -85,6 +94,11 @@
                 <div class="form-group">
                     <label for="isActive">Actif :</label>
                     <select name="isActive" id="isActive">
+                    @if($users->isActif == 1)
+                        <option value="" selected disabled hidden>Actif</option>
+                    @else
+                        <option value="" selected disabled hidden>Inactif</option>
+                    @endif
                         <option value="0" name="isActive">Non</option>
                         <option value="1" name="isActive">Oui</option>
                     </select>

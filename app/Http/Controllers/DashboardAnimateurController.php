@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Formation;
 use App\Models\Event;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardAnimateurController extends Controller
 
@@ -30,5 +32,20 @@ class DashboardAnimateurController extends Controller
     
                 ->with('formations',$formations,'events',$events);        
     }
+
+
+
+   /* public function update(Request $request, $id){
+
+        $post = DB::table('user_event')->update(
+            ['IdUser'=> Auth::user()->id->where('id','=',$id)],
+            ['IdEvent'=> Event::all()->where('id' ,'=', $id)]
+        );
+        $input = $request->all();
+        $post->update($input);
+
+        return redirect('adminformation')
+                        ->with('success','formation updated successfully');
+    }*/
 
 }

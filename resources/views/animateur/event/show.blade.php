@@ -21,8 +21,8 @@
     <div class="forms">
         <div class="div-group"><strong>Titre :</strong> {{ $events->nameEvent }}</div>
         <div class="div-group"><strong>Description :</strong> {{ $events->descrEvent }}</div>
-        <div class="div-group"><strong>Date de début :</strong> {{ $events->startDate }}</div>
-        <div class="div-group"><strong>Date de fin :</strong> {{ $events->endDate }}</div>
+        <div class="div-group"><strong>Date de début :</strong> {{ date('j F Y',strtotime($events->startDate)) }}</div>
+        <div class="div-group"><strong>Date de fin :</strong> {{ date('j F Y',strtotime($events->endDate)) }}</div>
         <div class="div-group"><strong>Nom de l'Entreprise :</strong> {{ $events->companyName }}</div>
         <div class="div-group"><strong>Nombre d'animateurs requis :</strong> {{ $events->nbAnimNeed }}</div>
         <div class="div-group"><strong>Nombre d'animateurs inscrits :</strong> {{ $events->nbAnimSub }}</div>
@@ -34,7 +34,7 @@
         @endif
         </div>
         <div class="div-group"><strong>Type :</strong> Évènement {{ $events->type }}</div>
-        <div class="div-group"><strong>Langue :</strong> {{ $events->langue }}</div>
+        <div class="div-group"><strong>Langue :</strong> {{  ucfirst($events->langue) }}</div>
         @foreach($modos as $modo)
         <div class="div-group"><strong>Modérateur :</strong> {{ $modo->firstname }} {{ $modo->lastname }}</div>
         @endforeach

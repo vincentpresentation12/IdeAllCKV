@@ -28,8 +28,24 @@
                 {{ $users->team }}
             @endif
             </div>
-                <div class="div-group"><strong>Statut :</strong> Animateur {{ $users->type }}</div>
+            <div class="div-group"><strong>Téléphone :</strong> {{ $users->phone }}</div>
+            <div class="div-group"><strong>Bilingue :</strong>
+            @if($users->isBilingual == 0)
+                Non
+            @else
+                Oui
+            @endif
             </div>
+            <div class="div-group"><strong>Droit :</strong> {{ ucfirst($users->user_type) }}</div>
+            <div class="div-group"><strong>Type :</strong> Animateur {{ $users->type }}</div>
+            <div class="div-group"><strong>Statut :</strong>
+            @if($users->isActive == 0)
+                Inactif
+            @else
+                Actif
+            @endif
+            </div>
+        </div>
             <div class="moderateview">
                 <a href="{{ url('/adminuser/' . $users->id . '/edit') }}" title="Edit user"><i class="fa-solid fa-pen"></i></a>
                 <form method="POST" action="{{ url('/adminuser' . '/' . $users->id) }}" accept-charset="UTF-8" >

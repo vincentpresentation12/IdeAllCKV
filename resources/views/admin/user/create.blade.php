@@ -36,8 +36,8 @@
             <input id="team" name="team" rows="10" placeholder="ex : Superhéros">
         </div>
         <div class="form-group">
-            <label for="lastname">Téléphone :</label>
-            <input type="text" id="lastname" placeholder="ex : 0123456789" name="lastname">
+            <label for="phone">Téléphone :</label>
+            <input dtype="text" id="phone" placeholder="ex : 0123456789" name="phone">
         </div>
         <div class="form-group">
                 <label for="isBilingual">Bilingue :</label>
@@ -66,8 +66,8 @@
         <div class="form-group">
                 <label for="isActive">Actif :</label>
                 <select name="isActive" id="isActive">
-                    <option value="1" name="isActive">Oui</option>
-                    <option value="0" name="isActive">Non</option>
+                    <option value="1" name="isActive">Actif</option>
+                    <option value="0" name="isActive">Inactif</option>
                 </select>
         </div>
         <br/>

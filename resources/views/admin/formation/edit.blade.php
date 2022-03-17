@@ -57,7 +57,7 @@
                 <div class="form-group">
                 <label>Type :</label>
                 <select name="type" id="type">
-                    <option value="" selected disabled hidden>{{ $formations->type }}</option>
+                    <option value="" selected disabled hidden>{{  ucfirst($formations->type) }}</option>
                     <option value="physique" name="type">Physique</option>
                     <option value="virtuel" name="type">Virtuel</option>
                 </select>
@@ -66,10 +66,10 @@
                 <div class="form-group">
                     <label>Langue :</label>
                     <select name="langue" id="langue">
-                        <option value="" selected disabled hidden>{{ $formations->langue }}</option>
-                        <option value="français">français</option>
-                        <option value="anglais">anglais</option>
-                        <option value="bilingue">bilingue</option>
+                        <option value="" selected disabled hidden>{{  ucfirst($formations->langue) }}</option>
+                        <option value="français">Français</option>
+                        <option value="anglais">Anglais</option>
+                        <option value="bilingue">Bilingue</option>
                     </select>
                 </div>
                 <div class="form-group">

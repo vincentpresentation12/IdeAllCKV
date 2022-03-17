@@ -31,7 +31,8 @@
                 {{ $formations->type }}
             @endif
             </div>
-            <div class="div-group"><strong>Langue :</strong> {{ $formations->langue }}</div>
+            <div class="div-group"><strong>Langue :</strong> {{ ucfirst($formations->langue) }}</div>
+            <div class="div-group"><strong>Activité :</strong> {{ $formations->idActivity }}</div>
         </div>
       </div>
 </div>
