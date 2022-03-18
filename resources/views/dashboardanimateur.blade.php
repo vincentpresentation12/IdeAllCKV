@@ -28,7 +28,6 @@
                         <div class="full">
                             <div class="title"><a href="{{ url('/animateurformation/' . $formation->id) }}">{{ $formation->title }}</a></div>
                             <div class="relatedtolang">
-                                <span class="event">ÉVÉNEMENT : nom de l'événement relié </span>
 
                                 <span class="lang">
                                     @if ($formation->langue == 'français')
